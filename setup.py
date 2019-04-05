@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygora-phchcc",
-    version="0.0.3",
+    version="0.0.5",
     author="Haochen Pan",
     author_email="phchcc@gmail.com",
     description="A web crawler library that fetches and parses data from Boston College Agora Portal",
@@ -13,6 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/haochenpan/pygora",
     packages=setuptools.find_packages(),
+    install_requires=[
+        'lxml',
+        'requests'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

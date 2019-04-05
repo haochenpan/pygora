@@ -2,6 +2,9 @@
 #### A web crawler library that fetches and parses data from [BC Agora Portal](https://services.bc.edu/commoncore/myservices.do).
 
 ## To Install (needs Python 3):
+```
+pip install pygora-phchcc
+```
 
 ## To Run:
 ##### example: download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
@@ -9,6 +12,7 @@
 from pygora import *
 
 session, gen_time = get_session("myAgoraUsername", "myAgoraPassword", check_valid=True)
+# if gen_time == 0, we know something goes wrong (maybe you did not input the correct credential)
 subjects = download_subjects(session, simple=True)
 # subjects = download_subjects(session) # get you the full information
 
@@ -74,3 +78,15 @@ for key, value in info_dict.items():
 ##### or search our names in BC directory
 
 ## Special Thanks
+##### Special thanks to people who made EagleVision (this project's prototype) and pygora alive (names are listed in alphabetical order):
+##### [Ashkan Moghaddassi]() -- provides code reviews
+##### [Baichuan (Patrick) Guo]() -- the original "Honest Team"
+##### [Cecilia Wu]() -- awesome idea inputs
+##### [David Shen]() -- the EagleVision Dev Team
+##### [Estevan Feliz](http://estevanfeliz.me/) -- the original "Honest Team" & the EagleVision Dev Team
+##### [Jacob Wolf]() -- provides code reviews
+##### [Jianxin (Jeff) Wang]() -- provides code reviews
+##### [Roger Wang](https://rogerwangcs.com/) -- the EagleVision Dev Team
+##### [Yingjian (Steven) Wu](https://github.com/yingjianwu199868)  -- awesome idea inputs
+##### [Yuning (Tommy) Yang]() -- the original "Honest Team"
+##### [Yuxuan (Jacky) Jin](https://github.com/PolarCapital) -- the EagleVision Dev Team

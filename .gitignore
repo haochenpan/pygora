@@ -4,3 +4,6 @@ venv
 *.log
 *.pyc
 *.txt
+build/*
+dist/*
+pygora_phchcc.egg-info/*
