@@ -10,6 +10,8 @@ from pygora import *
 
 session, gen_time = get_session("myAgoraUsername", "myAgoraPassword", check_valid=True)
 subjects = download_subjects(session, simple=True)
+# subjects = download_subjects(session) # get you the full information
+
 
 with open("subjects.txt", "w") as f:
     for line in subjects:
@@ -21,7 +23,7 @@ with open("subjects.txt", "w") as f:
 ```python
 from pygora import *
 
-# to set credential, run it once so that username & pw are stored locally
+# to set credential, run it once so that username & password are stored locally
 set_credential("myAgoraUsername", "myAgoraPassword")
 
 # to clear out credential

@@ -84,9 +84,9 @@ def get_session(username: str, password: str, check_valid=False):
     :param password: corresponding password
     :param check_valid: if True, check the establish session really works
                         by visiting a sample page
-    :return: normally returns (requests.Session, generate_time)
+    :return: normally returns a (requests.Session, generate_time) tuple
              if session is not established / asked to check valid by fails
-             returns (None, 0)
+             returns a (None, 0) tuple
     """
     try:
         session = Session()
@@ -363,10 +363,3 @@ LOG = get_logger("pygora")
 
 if __name__ == '__main__':
     pass
-
-    session, gen_time = get_session(*get_credential())
-    url, info_dict = COURSE_URL.format('ACCT102101'), dict()
-    resp = session.get(url)
-    parse_course_page(resp, info_dict)
-    for key, value in info_dict.items():
-        print(key, value)
