@@ -4,7 +4,7 @@
 ## To Install (needs Python 3):
 
 ## To Run:
-#### example: download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
+##### example: download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
 ```python
 from pygora import *
 
@@ -17,7 +17,7 @@ with open("subjects.txt", "w") as f:
         f.write(line + "\n")
 ```
 
-#### cache the username and password so that you don't have to write them explicitly in a script
+##### cache the username and password so that you don't have to write them explicitly in a script
 ```python
 from pygora import *
 
@@ -29,7 +29,7 @@ set_credential("", "")
 
 ```
 
-#### example of `parse_subject_page`: print out courses of subject BIOL (school and subject codes can be found in `subject.txt`), provided that if you have run `set_credential`
+##### example of `parse_subject_page`: print out all biology courses (school and subject codes can be found in `subject.txt`), provided that if you have run `set_credential`
 ```python
 from pygora import *
 
@@ -46,7 +46,7 @@ for course in courses:
 ```
 
 
-#### example of `parse_course_page`: print all information on a course page
+##### example of `parse_course_page`: print all information on a course page (the course code can be found in the output of `parse_subject_page`)
 ```python
 from pygora import *
 
