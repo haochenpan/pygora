@@ -1,7 +1,7 @@
 # pygora
 #### A web crawler library that fetches and parses data from [BC Agora Portal](https://services.bc.edu/commoncore/myservices.do).
 
-## To Install (needs Python 3):
+## To Install (need Python 3):
 ```
 pip install pygora-phchcc
 ```
