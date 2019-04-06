@@ -229,7 +229,7 @@ def parse_subject_page(response):
 def parse_course_page(response, info_dict):
     try:
         html = HTML(response.text)
-        information = html.xpath('//*[@id="courseinfoschedHome"]/div/div/div/div')
+        information = html.xpath('//*[@id="courseinfoschedHome"]/div/div/div[@class="row"]')
         assert len(information) == 15
     except Exception:
         LOG.exception(f"subject_fetcher_thread, error fetching: \n{response.url}")
@@ -363,3 +363,10 @@ LOG = get_logger("pygora")
 
 if __name__ == '__main__':
     pass
+    # s, t = get_session(*get_credential())
+    # u = COURSE_URL.format('MUSA108001')
+    # resp = s.get(u)
+    # dummy = dict()
+    # parse_course_page(resp, dummy)
+    # for k, v in dummy.items():
+    #     print(k, v)
