@@ -246,7 +246,7 @@ def parse_course_page(response, info_dict):
             each = _clr_str(each)
             info_dict['department'] = each[len('Department '):]
         elif i == 2:
-            fs = each.xpath('./a')
+            fs = each.xpath('./div/a/span')
             info_dict['faculties'] = [f.xpath('string(.)').replace('\xa0', '') for f in fs]
         elif i == 4:
             each = _clr_str(each)
