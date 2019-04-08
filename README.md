@@ -1,13 +1,13 @@
 # pygora
 #### A web crawler library that fetches and parses data from [BC Agora Portal](https://services.bc.edu/commoncore/myservices.do).
 
-## To Install (need Python 3):
+## Getting started (Python 3.7):
 ```
 pip install pygora-phchcc
 ```
 
-## To Run:
-##### example: download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
+## Examples
+##### download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
 ```python
 from pygora import *
 
@@ -68,7 +68,7 @@ for key, value in info_dict.items():
 
 ```
 
-## Used by
+## Related Projects
 ##### the backend of [EagleVision](http://www.eaglevisionapp.com/)
 ##### the backend of [New PEPS (planning)]()
 
