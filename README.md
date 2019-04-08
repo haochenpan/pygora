@@ -79,14 +79,14 @@ for key, value in info_dict.items():
 
 ## Special Thanks
 ##### Special thanks to people who made EagleVision (this project's prototype) and pygora alive (names are listed in alphabetical order):
-##### [Ashkan Moghaddassi]() -- provides code reviews
-##### [Baichuan (Patrick) Guo]() -- the original "Honest Team"
-##### [Cecilia Wu]() -- awesome idea inputs
-##### [David Shen]() -- the EagleVision Dev Team
-##### [Estevan Feliz](http://estevanfeliz.me/) -- the original "Honest Team" & the EagleVision Dev Team
-##### [Jacob Wolf]() -- provides code reviews
-##### [Jianxin (Jeff) Wang]() -- provides code reviews
-##### [Roger Wang](https://rogerwangcs.com/) -- the EagleVision Dev Team
-##### [Yingjian (Steven) Wu](https://github.com/yingjianwu199868)  -- awesome idea inputs
-##### [Yuning (Tommy) Yang]() -- the original "Honest Team"
-##### [Yuxuan (Jacky) Jin](https://github.com/PolarCapital) -- the EagleVision Dev Team
+[Ashkan Moghaddassi]() -- provides code reviews <br>
+[Baichuan (Patrick) Guo]() -- the original "Honest Team" <br>
+[Cecilia Wu]() -- awesome idea inputs <br>
+[David Shen]() -- the EagleVision Dev Team <br>
+[Estevan Feliz](http://estevanfeliz.me/) -- the original "Honest Team" & the EagleVision Dev Team <br>
+[Jacob Wolf]() -- provides code reviews <br>
+[Jianxin (Jeff) Wang]() -- provides code reviews <br>
+[Roger Wang](https://rogerwangcs.com/) -- the EagleVision Dev Team  <br>
+[Yingjian (Steven) Wu](https://github.com/yingjianwu199868)  -- awesome idea inputs <br>
+[Yuning (Tommy) Yang]() -- the original "Honest Team" <br>
+[Yuxuan (Jacky) Jin](https://github.com/PolarCapital) -- the EagleVision Dev Team <br>
