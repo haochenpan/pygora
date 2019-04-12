@@ -84,7 +84,7 @@ for key, value in info_dict.items():
 [Cecilia Wu]() -- awesome idea inputs <br>
 [David Shen]() -- the EagleVision Dev Team <br>
 [Estevan Feliz](http://estevanfeliz.me/) -- the original "Honest Team" & the EagleVision Dev Team <br>
-[Jacob Wolf]() -- provides code reviews <br>
+[Jacob Wolf]() -- awesome idea inputs <br>
 [Jianxin (Jeff) Wang]() -- provides code reviews <br>
 [Roger Wang](https://rogerwangcs.com/) -- the EagleVision Dev Team  <br>
 [Yingjian (Steven) Wu](https://github.com/yingjianwu199868)  -- awesome idea inputs <br>
