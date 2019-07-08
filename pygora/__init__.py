@@ -24,6 +24,7 @@ CRE_PATH = path.join(getcwd(), 'cre')
 def set_credential(username, password):
     """
     hashes and locally stores a username and a password to CRE_PATH
+    in a sense, this is quite unsafe, but we assume the envs are secure
     :param username: a valid Agora username
     :param password: corresponding password
     :return:
@@ -147,6 +148,12 @@ def are_sessions_valid(sessions: list, gen_times: list, strong=False):
 
 
 def download_subjects(session, simple=False):
+    """
+
+    :param session:
+    :param simple: True: each subject as a string. False: each subject as a dict
+    :return:
+    """
     resp = session.get(url4)  # or any other subject
     html = HTML(resp.text)
     school_list = html.xpath('//li[@id="school"]/ul')[0]
@@ -227,11 +234,9 @@ def parse_subject_page(response):
 
 
 def parse_course_page(response, info_dict):
-    try:
-        html = HTML(response.text)
-        information = html.xpath('//*[@id="courseinfoschedHome"]/div/div/div[@class="row"]')
-        assert len(information) == 15
-    except Exception:
+    html = HTML(response.text)
+    information = html.xpath('//*[@id="courseinfoschedHome"]/div/div/div[@class="row"]/div')
+    if len(information) != 15:
         LOG.exception(f"subject_fetcher_thread, error fetching: \n{response.url}")
         sleep(3)
         return
@@ -360,13 +365,3 @@ def _get_course_url_and_md5(course):  # course: CSCI110101
 
 
 LOG = get_logger("pygora")
-
-if __name__ == '__main__':
-    pass
-    # s, t = get_session(*get_credential())
-    # u = COURSE_URL.format('MUSA108001')
-    # resp = s.get(u)
-    # dummy = dict()
-    # parse_course_page(resp, dummy)
-    # for k, v in dummy.items():
-    #     print(k, v)

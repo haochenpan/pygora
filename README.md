@@ -1,26 +1,26 @@
 # pygora
 #### A web crawler library that fetches and parses data from [BC Agora Portal](https://services.bc.edu/commoncore/myservices.do).
 
-## Getting started (Python 3.7):
+## Getting started (Python 3):
 ```
 pip install pygora-phchcc
 ```
 
 ## Examples
-##### download and store all subject links with corresponding school code & subject code (the username and password will not be cached locally)
+##### log in agora, download and print links to all subject pages
 ```python
 from pygora import *
 
 session, gen_time = get_session("myAgoraUsername", "myAgoraPassword", check_valid=True)
 # if gen_time == 0, we know something goes wrong (maybe you did not input the correct credential)
-subjects = download_subjects(session, simple=True)
-# subjects = download_subjects(session) # get you the full information
+print(gen_time)
 
+subjects = download_subjects(session, simple=True)  # simple: each subject is a string
+for i, line in enumerate(subjects):
+    print(i, line)
+    
+# subjects = download_subjects(session) #eacg subject is a dict, with more information
 
-with open("subjects.txt", "w") as f:
-    for line in subjects:
-        print(line)
-        f.write(line + "\n")
 ```
 
 ##### cache the username and password so that you don't have to write them explicitly in a script
@@ -79,14 +79,9 @@ for key, value in info_dict.items():
 
 ## Special Thanks
 ##### Special thanks to people who made EagleVision (this project's prototype) and pygora alive (names are listed in alphabetical order):
-[Ashkan Moghaddassi]() -- provides code reviews <br>
 [Baichuan (Patrick) Guo]() -- the original "Honest Team" <br>
-[Cecilia Wu]() -- awesome idea inputs <br>
 [David Shen]() -- the EagleVision Dev Team <br>
 [Estevan Feliz](http://estevanfeliz.me/) -- the original "Honest Team" & the EagleVision Dev Team <br>
-[Jacob Wolf]() -- awesome idea inputs <br>
-[Jianxin (Jeff) Wang]() -- provides code reviews <br>
 [Roger Wang](https://rogerwangcs.com/) -- the EagleVision Dev Team  <br>
-[Yingjian (Steven) Wu](https://github.com/yingjianwu199868)  -- awesome idea inputs <br>
 [Yuning (Tommy) Yang]() -- the original "Honest Team" <br>
 [Yuxuan (Jacky) Jin](https://github.com/PolarCapital) -- the EagleVision Dev Team <br>
