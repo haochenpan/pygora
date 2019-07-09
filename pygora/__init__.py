@@ -98,7 +98,7 @@ def get_session(username: str, password: str, check_valid=False):
         LOG.exception(f"get_session raises an exception")
         return None, 0
 
-    if check_valid and not _is_session_valid(session):
+    if check_valid and not is_session_valid(session):
         LOG.exception(f"get_session raises an exception")
         return None, 0
 
@@ -141,7 +141,7 @@ def are_sessions_valid(sessions: list, gen_times: list, strong=False):
     # strong validity: sessions are actually working
     if strong:
         for session in sessions:
-            if not _is_session_valid(session):
+            if not is_session_valid(session):
                 return False
 
     return True
@@ -170,7 +170,7 @@ def download_subjects(session, simple=False):
 
         for j, each_school in enumerate(school_codes):
             if each_school.startswith(each_subject[0]):
-                url, md5 = _get_subject_url_and_md5(each_school, each_subject)
+                url, md5 = get_subject_url_and_md5(each_school, each_subject)
                 if simple:
                     subject_dict = each_school + " " + each_subject + " " + url
                 else:
@@ -218,7 +218,7 @@ def parse_subject_page(response):
             alert = 'CLOSED'
         else:
             alert = 'OPEN'
-        url, md5 = _get_course_url_and_md5(code)
+        url, md5 = get_course_url_and_md5(code)
         course_dict = {
             "_id": md5,
             "term": TERM,
@@ -245,16 +245,16 @@ def parse_course_page(response, info_dict):
         if i == 3:  # term
             pass
         elif i == 0:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict['schoolFull'] = each[len('School '):]
         elif i == 1:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict['department'] = each[len('Department '):]
         elif i == 2:
             fs = each.xpath('./div/a/span')
             info_dict['faculties'] = [f.xpath('string(.)').replace('\xa0', '') for f in fs]
         elif i == 4:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["maximumSize"] = int(each[len('Maximum Size '):])
         elif i == 5:
             each = each.xpath('./div[@class="schedule"]')[0]
@@ -266,7 +266,7 @@ def parse_course_page(response, info_dict):
             # if the schedule is by arrangement
             uls = each.xpath('./ul')
             if not uls:
-                s = _clr_str(each)
+                s = clr_str(each)
                 info_dict["day"].append(' '.join(s.split()))
                 continue
 
@@ -287,20 +287,20 @@ def parse_course_page(response, info_dict):
 
             # time
             for t in each.xpath('./span[@class="time"]'):
-                info_dict["time"].append(_clr_str(t))
+                info_dict["time"].append(clr_str(t))
 
             # location
             for l in each.xpath('./span[@class="location"]'):
-                info_dict["location"].append(_clr_str(l))
+                info_dict["location"].append(clr_str(l))
         elif i == 6:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["credits"] = int(each[len("Credits "):])
         elif i == 7:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["level"] = each[len("Level "):]
         elif i == 8:
             # description
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["description"] = each[len("Description "):].strip()
 
             # message
@@ -315,31 +315,31 @@ def parse_course_page(response, info_dict):
                 message = [each for each in message if each]
                 info_dict["message"] = message
         elif i == 9:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["prerequisites"] = each[len("Prerequisites "):]
         elif i == 10:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["corequisites"] = each[len("Corequisites "):]
         elif i == 11:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["crossListings"] = each[len("Cross Listings "):]
         elif i == 12:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["courseIndex"] = each[len("Course Index "):]
         elif i == 13:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["frequency"] = each[len("Frequency "):]
         elif i == 14:
-            each = _clr_str(each)
+            each = clr_str(each)
             info_dict["repeatable"] = each[len("Repeatable "):]
 
 
-def _is_session_valid(session):
+def is_session_valid(session):
     text = session.get(url4).text
     return 'studentservices@bc.edu' in text
 
 
-def _clr_str(path):
+def clr_str(path):
     """
     a private method that strips a xpath to a string
     :param path:
@@ -348,20 +348,20 @@ def _clr_str(path):
     return path.xpath('string(.)').strip()
 
 
-def _get_md5(url):
+def get_md5(url):
     h1 = md5()
     h1.update(url.encode(encoding='utf-8'))
     return h1.hexdigest()
 
 
-def _get_subject_url_and_md5(school, subject):  # school: 2MCAS, subject: 2CSCI
+def get_subject_url_and_md5(school, subject):  # school: 2MCAS, subject: 2CSCI
     url = SUBJECT_URL.format(school, subject)
-    return url, _get_md5(url)
+    return url, get_md5(url)
 
 
-def _get_course_url_and_md5(course):  # course: CSCI110101
+def get_course_url_and_md5(course):  # course: CSCI110101
     url = COURSE_URL.format(course)
-    return url, _get_md5(url)
+    return url, get_md5(url)
 
 
 LOG = get_logger("pygora")
