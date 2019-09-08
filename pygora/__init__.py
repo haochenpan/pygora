@@ -13,7 +13,8 @@ SUBJECT_URL = ('https://services.bc.edu/courseinfosched/courseinfoschedResults!d
                '&selectedSchool={}&selectedSubject={}&selectedLevel=All')
 COURSE_URL = ('https://services.bc.edu/courseinfosched/main/courseinfoschedResults!'
               f'displayOneCourseMethod.action?courseKey={TERM}'
-              '+{}&presentTerm=')
+              '+{}'
+              f'&presentTerm={TERM}&registrationTerm={TERM}&authenticated=true&')
 url1 = 'https://login.bc.edu/nidp/idff/sso?sid=0&sid=0&Ecom_User_ID={}&Ecom_Password={}'
 url2 = 'https://login.bc.edu/nidp/app/login?id=10&sid=0&option=credential&sid=0'
 url3 = 'https://login.bc.edu/nidp/app/login?sid=0&sid=0'

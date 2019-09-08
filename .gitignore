@@ -7,3 +7,5 @@ venv
 build/*
 dist/*
 pygora_phchcc.egg-info/*
+cre
+test.py
