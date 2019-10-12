@@ -7,7 +7,9 @@ from requests import Session
 from sys import stdout
 from time import time, sleep
 
-TERM = '2020F'  # 2019F -> Fall 2018, 2019S -> Spring 2019, 2020F -> Fall 2019, ...
+# 2019F -> Fall 2018, 2019S -> Spring 2019
+# 2020F -> Fall 2019, 2020S -> Spring 2020
+TERM = '2020S'
 SUBJECT_URL = ('https://services.bc.edu/courseinfosched/courseinfoschedResults!displayInput.action?'
                f'keyword=&presentTerm=&registrationTerm=&termsString=&selectedTerm={TERM}'
                '&selectedSchool={}&selectedSubject={}&selectedLevel=All')
