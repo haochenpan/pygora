@@ -9,7 +9,8 @@ from time import time, sleep
 
 # 2019F -> Fall 2018, 2019S -> Spring 2019
 # 2020F -> Fall 2019, 2020S -> Spring 2020
-TERM = '2020S'
+# 2021F -> Fall 2019, 2021S -> Spring 2020
+TERM = '2021F'
 SUBJECT_URL = ('https://services.bc.edu/courseinfosched/courseinfoschedResults!displayInput.action?'
                f'keyword=&presentTerm=&registrationTerm=&termsString=&selectedTerm={TERM}'
                '&selectedSchool={}&selectedSubject={}&selectedLevel=All')
