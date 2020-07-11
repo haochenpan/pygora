@@ -6,10 +6,11 @@ from os import path, getcwd
 from requests import Session
 from sys import stdout
 from time import time, sleep
+from lxml.etree import tostring
 
 # 2019F -> Fall 2018, 2019S -> Spring 2019
 # 2020F -> Fall 2019, 2020S -> Spring 2020
-# 2021F -> Fall 2019, 2021S -> Spring 2020
+# 2021F -> Fall 2020, 2021S -> Spring 2020
 TERM = '2021F'
 SUBJECT_URL = ('https://services.bc.edu/courseinfosched/courseinfoschedResults!displayInput.action?'
                f'keyword=&presentTerm=&registrationTerm=&termsString=&selectedTerm={TERM}'
@@ -295,7 +296,15 @@ def parse_course_page(response, info_dict):
 
             # location
             for l in each.xpath('./span[@class="location"]'):
-                info_dict["location"].append(clr_str(l))
+                # todo: I believe agora wrecks this part, online synchronous is not inside the span tag
+                # so that is likely to be changed in the future, but here is a temporary fix:
+                # ASYNCHRONOUS is fine, see CSCI227201
+                if b"ASYNCHRONOUS" in tostring(l):
+                    info_dict["location"].append("ONLINE ASYNCHRONOUS")
+                elif b"SYNCHRONOUS" in tostring(l):
+                    info_dict["location"].append("ONLINE SYNCHRONOUS")
+                else:
+                    info_dict["location"].append(clr_str(l))
         elif i == 6:
             each = clr_str(each)
             info_dict["credits"] = int(each[len("Credits "):])
